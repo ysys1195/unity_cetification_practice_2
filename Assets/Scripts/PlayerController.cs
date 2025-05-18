@@ -3,15 +3,30 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Object player;
+
+    void FixedUpdate()
     {
-        
+        Move();
+        Debug.Log(this.transform.eulerAngles);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Move()
     {
+        float moveHorizontal = 0f;
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveHorizontal = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            moveHorizontal = 1f;
+        }
+        
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, 0.0f);
+        rb.AddForce(movement *  100f, ForceMode.Force);
+        rb.MoveRotation(Quaternion.Euler(0, moveHorizontal + this.transform.eulerAngles.y, 0));
+
         
     }
 }
