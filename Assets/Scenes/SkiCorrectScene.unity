@@ -1521,7 +1521,7 @@ Transform:
   m_GameObject: {fileID: 762709440}
   serializedVersion: 2
   m_LocalRotation: {x: 0.066686384, y: 3.929444e-22, z: -4.168776e-23, w: 0.99777406}
-  m_LocalPosition: {x: 97.3, y: 5, z: -56.75}
+  m_LocalPosition: {x: 97.3, y: 4.21, z: -56.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2059,7 +2059,7 @@ Transform:
   m_GameObject: {fileID: 1054579390}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0666864, y: 3.9190887e-22, z: -2.6193298e-23, w: 0.997774}
-  m_LocalPosition: {x: 97.3, y: 5, z: -56.75}
+  m_LocalPosition: {x: 97.3, y: 4.21, z: -56.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2154,7 +2154,7 @@ PrefabInstance:
     - target: {fileID: 4335157639803988949, guid: 079d8e1325f92924690275cc28f21b1b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.56
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 4335157639803988949, guid: 079d8e1325f92924690275cc28f21b1b,
         type: 3}
@@ -2201,6 +2201,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4335157640701538008, guid: 079d8e1325f92924690275cc28f21b1b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335157640701538009, guid: 079d8e1325f92924690275cc28f21b1b,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2212,11 +2223,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4335157639803988956, guid: 079d8e1325f92924690275cc28f21b1b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1212947729}
+      addedObject: {fileID: 1212947733}
     - targetCorrespondingSourceObject: {fileID: 4335157639803988956, guid: 079d8e1325f92924690275cc28f21b1b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1212947733}
+      addedObject: {fileID: 1212947734}
   m_SourcePrefab: {fileID: 100100000, guid: 079d8e1325f92924690275cc28f21b1b, type: 3}
 --- !u!1 &1212947728 stripped
 GameObject:
@@ -2224,18 +2235,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1212947727}
   m_PrefabAsset: {fileID: 0}
---- !u!75 &1212947729
-ConstantForce:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &1212947729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4335157640701538008, guid: 079d8e1325f92924690275cc28f21b1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1212947727}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212947728}
-  m_Enabled: 1
-  m_Force: {x: 0, y: 0, z: -20}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!54 &1212947730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2278,11 +2283,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 1212947728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e0350f70baa747f1aa550ebeee30bb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b669ace71d13714c884d019d155ff59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1212947730}
-  player: {fileID: 1212947728}
+  playerStats:
+    speed: 0
+    speedMaximum: 1250
+    speedMinimum: 0
+    turnSpeed: 125
+    turnAcceleration: 15
+    turnDeceleration: 8
+  left: 97
+  right: 100
+  isMoving: 1
+  groundCheck: {fileID: 1212947729}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!95 &1212947734
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212947728}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e72103aa49cb24032b8a0cf95e1b4b19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1220676268
 PrefabInstance:
   m_ObjectHideFlags: 0
