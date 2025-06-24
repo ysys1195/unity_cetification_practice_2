@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class RemovableObstacle : ObstacleAlternative
 {
-    protected override void OnTriggerEnter(Collider collider)
+    public override void HitPlayer(GameObject player)
     {
-        base.OnTriggerEnter(collider);
+        base.HitPlayer(player);
+
         Destroy(this.gameObject);
     }
 }

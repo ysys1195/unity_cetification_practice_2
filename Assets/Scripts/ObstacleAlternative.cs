@@ -1,14 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class ObstacleAlternative : MonoBehaviour
 {
-
-    protected virtual void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collider.CompareTag("Player"))
+        if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player collided with obstacle: " + gameObject.name);
+            HitPlayer(collision.gameObject);
         }
     }
+
+    public virtual void HitPlayer(GameObject player)
+    {
+        print("I hit the player!");
+    }
+
 }
