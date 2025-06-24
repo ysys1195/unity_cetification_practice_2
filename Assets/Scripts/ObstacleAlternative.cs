@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObstacleAlternative : MonoBehaviour
 {
 
-    private void OnTriggerEnter(Collider collider)
+    protected virtual void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
         {
