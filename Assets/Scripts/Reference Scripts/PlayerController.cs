@@ -53,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
     // private PlayerDamage playerDamage;
 
-
-
     private void Start()
     {
         // grabs references to components
@@ -66,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving )
+        if (isMoving)
         {
             bool onGround = Physics.Linecast(transform.position, groundCheck.position, groundLayers);
             // animator.SetBool("grounded", onGround);
