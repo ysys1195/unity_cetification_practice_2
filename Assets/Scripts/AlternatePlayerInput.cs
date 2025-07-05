@@ -42,17 +42,9 @@ public class AlternatePlayerInput : MonoBehaviour
     private float movementY;
     // public float speed = 50;
 
-    private ObstacleEventManager obstacleEventManager;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        obstacleEventManager = GetComponent<ObstacleEventManager>();
-        if (obstacleEventManager != null)
-        {
-            obstacleEventManager.onCollideWithObstacle += HandleCollideWithObstacle;
-        }
     }
 
     private void OnMove(InputValue movementValue)
@@ -109,20 +101,6 @@ public class AlternatePlayerInput : MonoBehaviour
         float NewRange = (NewMax - NewMin);
         float NewValue = (((OldValue - OldMin) * NewRange) / OldRange) + NewMin;
         return (NewValue);
-    }
-
-    private void HandleCollideWithObstacle(GameObject obstacle)
-    {
-        Debug.Log("player collided with obstacle");
-    }
-
-    private void OnOestroy()
-    {
-        // delegateのメモリリーク対策
-        if (obstacleEventManager != null)
-        {
-            obstacleEventManager.onCollideWithObstacle -= HandleCollideWithObstacle;
-        }
     }
 }
 
