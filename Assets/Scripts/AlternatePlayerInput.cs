@@ -39,8 +39,6 @@ public class AlternatePlayerInput : MonoBehaviour
     public LayerMask groundLayers;
     private Rigidbody rb;
     private float movementX;
-    private float movementY;
-    // public float speed = 50;
 
     void Start()
     {
@@ -49,31 +47,36 @@ public class AlternatePlayerInput : MonoBehaviour
 
     private void OnMove(InputValue movementValue)
     {
-        bool onGround = Physics.Linecast(transform.position, groundCheck.position, groundLayers);
-        if (onGround)
-        {
-            Vector2 movementVector = movementValue.Get<Vector2>();
-            movementX = movementVector.x;
-            movementY = movementVector.y;
-        }
-
-        float turnAngle = Mathf.Abs(180 - transform.eulerAngles.y);
-        playerStats.speed += Remap(0, 90, playerStats.turnAcceleration, -playerStats.turnDeceleration, turnAngle);
-
-        // 前進方向の速度を設定
-        Vector3 velocity = transform.forward * playerStats.speed;
-        velocity.y = rb.linearVelocity.y;
-        rb.linearVelocity = velocity;
+        Vector2 movementVector = movementValue.Get<Vector2>();
+        movementX = movementVector.x;
     }
 
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement * playerStats.speed);
+        float turnAngle = Mathf.Abs(180 - transform.eulerAngles.y);
+        playerStats.speed += Remap(0, 90, playerStats.turnAcceleration, -playerStats.turnDeceleration, turnAngle);
 
         ControlSpeed();
 
-        // animator.SetFloat("playerSpeed", playerStats.speed);
+        // 左右移動（Input System）
+        Vector3 movement = new Vector3(movementX, 0.0f, 0.0f);
+        rb.AddForce(movement * playerStats.speed * 0.1f);
+
+        // 自動前進（スロープに沿って滑る）
+        bool onGround = Physics.Linecast(transform.position, groundCheck.position, groundLayers);
+        if (onGround)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f, groundLayers))
+            {
+                Vector3 groundNormal = hit.normal;
+                float slopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+                if (slopeAngle > 0.1f)
+                {
+                    Vector3 slopeDirection = Vector3.Cross(Vector3.Cross(groundNormal, Vector3.down), groundNormal).normalized;
+                    rb.AddForce(slopeDirection * playerStats.speed * 0.1f);
+                }
+            }
+        }
     }
 
     private void ControlSpeed()
@@ -103,4 +106,3 @@ public class AlternatePlayerInput : MonoBehaviour
         return (NewValue);
     }
 }
-
