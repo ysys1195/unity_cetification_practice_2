@@ -1,31 +1,29 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class BlueFlag : MonoBehaviour
 {
     [SerializeField] private Material correctMaterial;
     [SerializeField] private Material failMaterial;
-    private MeshRenderer meshRenderer;
+    private MeshRenderer parentRenderer;
 
     private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        parentRenderer = transform.parent.GetComponent<MeshRenderer>();
     }
 
     // プレイヤーが通ったらフラッグの色を変える
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("player")) return;
+        if (!other.CompareTag("Player")) return;
 
         if (IsCorrectSide(other.transform.position.x))
         {
-            // プレイヤーが正しい側からフラッグにぶつかった場合
-            // フラッグの色を青に変える
+            // プレイヤーが正しい側からフラッグにぶつかった場合フラッグの色を緑に変える
             ChangeFlagColor(correctMaterial);
         }
         else
         {
-            // プレイヤーが間違った側からフラッグにぶつかった場合
+            // プレイヤーが間違った側からフラッグにぶつかった場合ふらっぶの色を黒に変える
             ChangeFlagColor(failMaterial);
         }
     }
@@ -40,9 +38,9 @@ public class BlueFlag : MonoBehaviour
     // フラッグの色を変える
     public void ChangeFlagColor(Material mat)
     {
-        if (meshRenderer != null && mat != null)
+        if (parentRenderer != null && mat != null)
         {
-            meshRenderer.material = mat;
+            parentRenderer.material = mat;
         }
     }
 }
