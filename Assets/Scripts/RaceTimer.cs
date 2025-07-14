@@ -8,15 +8,15 @@ public class RaceTimerAlternative : MonoBehaviour
   // 違うフラッグにぶつかったら合計時間を増やす
   private float raceTime = 0f;
   private bool isRacing = false;
-  private float additionalTime = 10f;
 
-private void Update() {
-    if (isRacing)
-    {
-      raceTime += Time.deltaTime; // タイマーを更新
-      Debug.Log("レースタイム: " + raceTime + "秒");
-    }
-}
+  private void Update() {
+      if (isRacing)
+      {
+        raceTime += Time.deltaTime; // タイマーを更新
+        Debug.Log("レースタイム: " + raceTime + "秒");
+      }
+  }
+
   private void OnTriggerEnter(Collider other)
   {
     if (!other.CompareTag("Player")) return;
@@ -42,7 +42,7 @@ private void Update() {
     Debug.Log("レースタイム： " + raceTime + "秒");
   }
 
-  private void AddTime(float timeToAdd)
+  public void AddTime(float timeToAdd)
   {
     if (isRacing)
     {

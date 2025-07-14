@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats:
     speed: 0
-    speedMaximum: 1250
+    speedMaximum: 125
     speedMinimum: 0
     turnSpeed: 125
     turnAcceleration: 15
@@ -4099,6 +4099,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865111205127769842, guid: cd2474c671c5e4fd59ece847d02f0b28,
+        type: 3}
+      propertyPath: playerStats.turnSpeed
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4522165529437687349, guid: cd2474c671c5e4fd59ece847d02f0b28,
         type: 3}

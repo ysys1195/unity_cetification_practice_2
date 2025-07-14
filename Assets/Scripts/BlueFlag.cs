@@ -5,10 +5,12 @@ public class BlueFlag : MonoBehaviour
     [SerializeField] private Material correctMaterial;
     [SerializeField] private Material failMaterial;
     private MeshRenderer parentRenderer;
+    private RaceTimerAlternative raceTimer;
 
     private void Start()
     {
         parentRenderer = transform.parent.GetComponent<MeshRenderer>();
+        raceTimer = FindFirstObjectByType<RaceTimerAlternative>();
     }
 
     // プレイヤーが通ったらフラッグの色を変える
@@ -23,8 +25,10 @@ public class BlueFlag : MonoBehaviour
         }
         else
         {
-            // プレイヤーが間違った側からフラッグにぶつかった場合ふらっぶの色を黒に変える
+            // プレイヤーが間違った側からフラッグにぶつかった場合フラッグの色を黒に変える
             ChangeFlagColor(failMaterial);
+            // 1秒のペナルティを追加
+            raceTimer.AddTime(1f);
         }
     }
 
