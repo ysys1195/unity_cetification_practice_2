@@ -32,7 +32,7 @@ public class BlueFlag : MonoBehaviour
         }
     }
 
-    // スタートのプレイヤーの位置からみて青いフラッグの位置が左にあったらtrueを返す
+    // プレイヤーの位置からみて青いフラッグの位置が左にあったらtrueを返す
     private bool IsCorrectSide(float playerX)
     {
         var flagX = transform.position.x;
