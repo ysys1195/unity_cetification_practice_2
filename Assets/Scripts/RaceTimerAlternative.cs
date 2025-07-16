@@ -22,7 +22,6 @@ public class RaceTimerAlternative : MonoBehaviour
     if (isRacing == true)
     {
       raceTime += Time.deltaTime; // タイマーを更新
-      Debug.Log("レースタイム: " + raceTime + "秒");
     }
   }
 
