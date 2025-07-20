@@ -1,12 +1,10 @@
-using TMPro;
 using UnityEngine;
 
 public class RaceTimerAlternative : MonoBehaviour
 {
   public static RaceTimerAlternative Instance { get; private set; }
-  private float raceTime = 0f;
+  public float raceTime { get; private set; }
   private bool isRacing = false;
-  [SerializeField] private GameObject UICanvas;
 
   private void Awake()
   {
@@ -38,22 +36,7 @@ public class RaceTimerAlternative : MonoBehaviour
   {
     isRacing = false;
     Debug.Log("レースが終わりました。レースタイム： " + raceTime + "秒");
-    ShowFinishCanvas();
-  }
-
-  private void ShowFinishCanvas()
-  {
-    Instantiate(UICanvas);
-    // TotalTimeというGameObjectにraceTimeを表示する
-    var totalTimeText = GameObject.Find("TotalTime");
-    if (totalTimeText != null)
-    {
-      var textComponent = totalTimeText.GetComponent<TextMeshProUGUI>();
-      if (textComponent != null)
-      {
-        textComponent.text = "Total Time: " + raceTime.ToString("F2") + "秒";
-      }
-    }
+    GameManagerAlternative.Instance.ShowRaceOverCanvas();
   }
 
   public void AddTime(float timeToAdd)
@@ -63,11 +46,5 @@ public class RaceTimerAlternative : MonoBehaviour
       raceTime += timeToAdd;
       Debug.Log("合計時間が " + timeToAdd + "秒 増えました。現在の合計時間: " + raceTime + "秒");
     }
-  }
-
-  private void OnDestroy()
-  {
-    Destroy(UICanvas);
-    UICanvas = null;
   }
 }
