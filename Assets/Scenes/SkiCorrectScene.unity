@@ -574,6 +574,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &117688469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9137080439344032366, guid: 49ee210ac0510844d8da858708681a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 116157318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &125325422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4128514016198210737, guid: 6cdb89937dcea499e8123917a015469c,
@@ -2132,6 +2138,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 783096800}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &810875129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 388119015905450593, guid: 49ee210ac0510844d8da858708681a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 116157318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &817182185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4051,6 +4069,8 @@ MonoBehaviour:
   RaceOverPanel: {fileID: 160729388}
   raceTimeText: {fileID: 116157320}
   screenOverlay: {fileID: 1713008587}
+  confirmQuitPanel: {fileID: 117688469}
+  confirmQuitButton: {fileID: 810875129}
 --- !u!4 &1480821830
 Transform:
   m_ObjectHideFlags: 0

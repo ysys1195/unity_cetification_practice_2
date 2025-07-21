@@ -9,11 +9,21 @@ public class GameManagerAlternative : MonoBehaviour
   [SerializeField] private GameObject RaceOverPanel;
   [SerializeField] private TextMeshProUGUI raceTimeText;
   [SerializeField] private GameObject screenOverlay;
+  [SerializeField] private GameObject confirmQuitPanel;
+  [SerializeField] private Button confirmQuitButton;
   private readonly int FIRST_SCENE_INDEX = 0;
+  private bool isQuitConfirmed = false;
 
   private void Start()
   {
     RaceOverPanel.SetActive(false);
+    confirmQuitPanel.SetActive(false);
+
+    confirmQuitButton.onClick.AddListener(() =>
+    {
+      isQuitConfirmed = true;
+      confirmQuitPanel.SetActive(false);
+    });
 
     // 白カバーをフェードアウト
     screenOverlay.GetComponent<Image>().CrossFadeAlpha(0f, 1f, false);
@@ -67,6 +77,11 @@ public class GameManagerAlternative : MonoBehaviour
     // 鳴っている音を全て止める
     AudioListener.pause = true; // 音を一時停止
     AudioListener.volume = 0; // 音量を0にする
+
+    // 確認パネルを表示
+    confirmQuitPanel.SetActive(true);
+    // 確認パネルのOKボタンが押されるまで待機
+    yield return new WaitUntil(() => isQuitConfirmed);
 
     // 白カバーをフェードイン
     screenOverlay.GetComponent<Image>().CrossFadeAlpha(1f, 1f, false);
