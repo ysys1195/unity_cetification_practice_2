@@ -1,13 +1,23 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManagerAlternative : MonoBehaviour
 {
-  [SerializeField] private GameObject RaceOverCanvas;
+  [SerializeField] private GameObject RaceOverPanel;
   [SerializeField] private TextMeshProUGUI raceTimeText;
+  [SerializeField] private GameObject screenOverlay;
   private readonly int FIRST_SCENE_INDEX = 0;
+
+  private void Start()
+  {
+    RaceOverPanel.SetActive(false);
+
+    // 白カバーをフェードアウト
+    screenOverlay.GetComponent<Image>().CrossFadeAlpha(0f, 1f, false);
+  }
 
   private void OnEnable()
   {
@@ -17,10 +27,18 @@ public class GameManagerAlternative : MonoBehaviour
     GameEventAlternative.OnQuitGame += QuitGame;
   }
 
+  private void OnDisable()
+  {
+    GameEventAlternative.OnRaceEnd -= ShowRaceOverCanvas;
+    GameEventAlternative.OnRaceRetry -= ReloadScene;
+    GameEventAlternative.OnRaceNextLevel -= LoadNextScene;
+    GameEventAlternative.OnQuitGame -= QuitGame;
+  }
+
   private void ShowRaceOverCanvas()
   {
     raceTimeText.text = RaceTimerAlternative.Instance.raceTime.ToString("F2") + "sec";
-    RaceOverCanvas.SetActive(true);
+    RaceOverPanel.SetActive(true);
   }
 
   private void ReloadScene()
@@ -49,6 +67,9 @@ public class GameManagerAlternative : MonoBehaviour
     // 鳴っている音を全て止める
     AudioListener.pause = true; // 音を一時停止
     AudioListener.volume = 0; // 音量を0にする
+
+    // 白カバーをフェードイン
+    screenOverlay.GetComponent<Image>().CrossFadeAlpha(1f, 1f, false);
 
     yield return new WaitForSeconds(1f); // 1秒待機
 

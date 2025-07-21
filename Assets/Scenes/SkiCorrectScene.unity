@@ -440,7 +440,7 @@ PrefabInstance:
     - target: {fileID: 6564981167228359830, guid: 49ee210ac0510844d8da858708681a45,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6564981167228359914, guid: 49ee210ac0510844d8da858708681a45,
         type: 3}
@@ -562,12 +562,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49ee210ac0510844d8da858708681a45, type: 3}
---- !u!1 &116157319 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6564981167228359830, guid: 49ee210ac0510844d8da858708681a45,
-    type: 3}
-  m_PrefabInstance: {fileID: 116157318}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &116157320 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8764011173646947071, guid: 49ee210ac0510844d8da858708681a45,
@@ -733,6 +727,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3843501853203389526, guid: 492f32e443185ac40956e16c1076c0dc,
     type: 3}
   m_PrefabInstance: {fileID: 143235143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &160729388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6564981166728425805, guid: 49ee210ac0510844d8da858708681a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 116157318}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &192056411
 PrefabInstance:
@@ -4048,8 +4048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a0a3d970504adebbb533e1a199495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RaceOverCanvas: {fileID: 116157319}
+  RaceOverPanel: {fileID: 160729388}
   raceTimeText: {fileID: 116157320}
+  screenOverlay: {fileID: 1713008587}
 --- !u!4 &1480821830
 Transform:
   m_ObjectHideFlags: 0
@@ -4250,6 +4251,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de8ae90e1e1c42d4d839d1022293c09c, type: 3}
+--- !u!1 &1713008587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6564981167525259486, guid: 49ee210ac0510844d8da858708681a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 116157318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1808587025
 PrefabInstance:
   m_ObjectHideFlags: 0
