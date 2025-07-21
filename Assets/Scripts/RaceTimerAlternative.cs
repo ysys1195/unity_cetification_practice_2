@@ -36,7 +36,7 @@ public class RaceTimerAlternative : MonoBehaviour
   {
     isRacing = false;
     Debug.Log("レースが終わりました。レースタイム： " + raceTime + "秒");
-    GameManagerAlternative.Instance.ShowRaceOverCanvas();
+    GameEventAlternative.RaceEnd();
   }
 
   public void AddTime(float timeToAdd)
