@@ -7,6 +7,7 @@ public class GameManagerAlternative : MonoBehaviour
   public static GameManagerAlternative Instance { get; private set; }
   [SerializeField] private GameObject RaceOverCanvas;
   [SerializeField] private TextMeshProUGUI raceTimeText;
+  private readonly int FIRST_SCENE_INDEX = 0;
 
   private void Awake()
   {
@@ -22,6 +23,7 @@ public class GameManagerAlternative : MonoBehaviour
   {
     GameEventAlternative.OnRaceEnd += ShowRaceOverCanvas;
     GameEventAlternative.OnRaceRetry += ReloadScene;
+    GameEventAlternative.OnRaceNextLevel += LoadNextScene;
   }
 
   private void ShowRaceOverCanvas()
@@ -34,5 +36,20 @@ public class GameManagerAlternative : MonoBehaviour
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     Debug.Log("シーンをリロードしました。");
+  }
+
+  private void LoadNextScene()
+  {
+    int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+    if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+    {
+      SceneManager.LoadScene(nextSceneIndex);
+      Debug.Log("次のシーンをロードしました。");
+    }
+    else
+    {
+      Debug.Log("これ以上のシーンはありません。最初のシーンに戻ります。");
+      SceneManager.LoadScene(FIRST_SCENE_INDEX);
+    }
   }
 }
