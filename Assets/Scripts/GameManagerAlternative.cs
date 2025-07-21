@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,7 @@ public class GameManagerAlternative : MonoBehaviour
     GameEventAlternative.OnRaceEnd += ShowRaceOverCanvas;
     GameEventAlternative.OnRaceRetry += ReloadScene;
     GameEventAlternative.OnRaceNextLevel += LoadNextScene;
+    GameEventAlternative.OnQuitGame += QuitGame;
   }
 
   private void ShowRaceOverCanvas()
@@ -51,5 +53,22 @@ public class GameManagerAlternative : MonoBehaviour
       Debug.Log("これ以上のシーンはありません。最初のシーンに戻ります。");
       SceneManager.LoadScene(FIRST_SCENE_INDEX);
     }
+  }
+
+  private IEnumerator QuitGame()
+  {
+    // 鳴っている音を全て止める
+    AudioListener.pause = true; // 音を一時停止
+    AudioListener.volume = 0; // 音量を0にする
+
+    yield return new WaitForSeconds(1f); // 1秒待機
+
+    Debug.Log("ゲームを終了します。");
+    Application.Quit();
+
+    // エディタでのテスト用
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#endif
   }
 }
