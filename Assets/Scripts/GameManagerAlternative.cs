@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerAlternative : MonoBehaviour
 {
@@ -17,7 +18,12 @@ public class GameManagerAlternative : MonoBehaviour
     Instance = this;
   }
 
-  public void ShowRaceOverCanvas()
+  private void OnEnable()
+  {
+    GameEventAlternative.OnRaceEnd += ShowRaceOverCanvas;
+  }
+
+  private void ShowRaceOverCanvas()
   {
     raceTimeText.text = RaceTimerAlternative.Instance.raceTime.ToString("F2") + "sec";
     RaceOverCanvas.SetActive(true);
