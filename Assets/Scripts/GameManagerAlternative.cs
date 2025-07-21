@@ -5,20 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerAlternative : MonoBehaviour
 {
-  public static GameManagerAlternative Instance { get; private set; }
   [SerializeField] private GameObject RaceOverCanvas;
   [SerializeField] private TextMeshProUGUI raceTimeText;
   private readonly int FIRST_SCENE_INDEX = 0;
-
-  private void Awake()
-  {
-    if (Instance != null && Instance != this)
-    {
-      Destroy(gameObject);
-      return;
-    }
-    Instance = this;
-  }
 
   private void OnEnable()
   {
