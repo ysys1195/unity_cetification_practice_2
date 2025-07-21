@@ -21,11 +21,18 @@ public class GameManagerAlternative : MonoBehaviour
   private void OnEnable()
   {
     GameEventAlternative.OnRaceEnd += ShowRaceOverCanvas;
+    GameEventAlternative.OnRaceRetry += ReloadScene;
   }
 
   private void ShowRaceOverCanvas()
   {
     raceTimeText.text = RaceTimerAlternative.Instance.raceTime.ToString("F2") + "sec";
     RaceOverCanvas.SetActive(true);
+  }
+
+  private void ReloadScene()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    Debug.Log("シーンをリロードしました。");
   }
 }

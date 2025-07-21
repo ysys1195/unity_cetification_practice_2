@@ -8,8 +8,13 @@ public class GameEventAlternative : MonoBehaviour
 
   public static event raceAction OnRaceEnd;
 
+  public static event raceAction OnRaceRetry;
   public static void RaceEnd()
   {
     OnRaceEnd?.Invoke();
+  }
+  public static void RaceRetry()
+  {
+    OnRaceRetry?.Invoke();
   }
 }
