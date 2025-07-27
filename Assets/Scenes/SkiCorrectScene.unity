@@ -432,6 +432,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameEventAlternative, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6564981166728425805, guid: 49ee210ac0510844d8da858708681a45,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6564981167228359830, guid: 49ee210ac0510844d8da858708681a45,
         type: 3}
       propertyPath: m_Name
@@ -542,6 +547,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6564981167525259486, guid: 49ee210ac0510844d8da858708681a45,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6564981168225664803, guid: 49ee210ac0510844d8da858708681a45,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -556,6 +566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameEventAlternative, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137080439344032366, guid: 49ee210ac0510844d8da858708681a45,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
