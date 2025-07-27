@@ -30,6 +30,7 @@ public class RaceTimerAlternative : MonoBehaviour
     isRacing = true;
     raceTime = 0f; // タイマーをリセット
     Debug.Log("レースがスタートしました。タイマーをリセットしました。");
+    LeaderboardAlternative.Instance.AddRaceCount(); // レース回数を増やす
   }
 
   public void StopRace()
