@@ -49,6 +49,7 @@ public class GameManagerAlternative : MonoBehaviour
   {
     raceTimeText.text = RaceTimerAlternative.Instance.raceTime.ToString("F2") + "sec";
     RaceOverPanel.SetActive(true);
+    GameDataAlternative.Instance.completedRaces++;
   }
 
   private void ReloadScene()
