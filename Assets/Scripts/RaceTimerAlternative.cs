@@ -30,7 +30,6 @@ public class RaceTimerAlternative : MonoBehaviour
     isRacing = true;
     raceTime = 0f; // タイマーをリセット
     Debug.Log("レースがスタートしました。タイマーをリセットしました。");
-    LeaderboardAlternative.Instance.AddRaceCount(); // レース回数を増やす
   }
 
   public void StopRace()
@@ -38,7 +37,6 @@ public class RaceTimerAlternative : MonoBehaviour
     isRacing = false;
     Debug.Log("レースが終わりました。レースタイム： " + raceTime + "秒");
     GameEventAlternative.RaceEnd();
-    LeaderboardAlternative.Instance.TryAddBestTime(raceTime); // ベストタイムを更新
   }
 
   public void AddTime(float timeToAdd)
