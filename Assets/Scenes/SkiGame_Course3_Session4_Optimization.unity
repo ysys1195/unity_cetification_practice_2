@@ -293,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 70035748}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2096186, y: 0, z: 0, w: 0.97778326}
-  m_LocalPosition: {x: 104.98514, y: 16.706926, z: -72.12481}
+  m_LocalPosition: {x: 105.16033, y: 16.706926, z: -72.12481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2685,11 +2685,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3886003235171834601, guid: 27f9c05a0d4f0e14a856ed8ecbd67035,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1006319929}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f9c05a0d4f0e14a856ed8ecbd67035, type: 3}
 --- !u!4 &367991124 stripped
 Transform:
@@ -3853,7 +3849,7 @@ Transform:
   m_GameObject: {fileID: 667486966}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2096186, y: 0, z: 0, w: 0.97778326}
-  m_LocalPosition: {x: 104.98514, y: 16.706926, z: -72.12481}
+  m_LocalPosition: {x: 105.16033, y: 16.706926, z: -72.12481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5536,24 +5532,6 @@ MonoBehaviour:
     type: 3}
   throwDistance: 50
   throwSpeed: 1250
---- !u!1 &1006319926 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3886003235171834601, guid: 27f9c05a0d4f0e14a856ed8ecbd67035,
-    type: 3}
-  m_PrefabInstance: {fileID: 367991123}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1006319929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006319926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f533414cf18ffd3489fc36f8b7dbdb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1041974846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8485532309953187564, guid: 3d3a741bcdb7b8c4a84f8beb3ae4d7e9,
