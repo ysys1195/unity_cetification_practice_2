@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Snowball : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
     }

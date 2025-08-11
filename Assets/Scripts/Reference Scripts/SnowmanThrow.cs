@@ -51,7 +51,7 @@ public class SnowmanThrow : MonoBehaviour
 
     IEnumerator ThrowCooldown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         justThown = false;
     }
 }
