@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SnowmanThrow : MonoBehaviour
@@ -9,6 +8,8 @@ public class SnowmanThrow : MonoBehaviour
     public int throwSpeed;
     private bool justThown = false;
     private GameObject target;
+    private Vector3 throwY = new Vector3(0, 0.33f, 0);
+    private int frameInterval = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -19,28 +20,38 @@ public class SnowmanThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (justThown) return;
-
-        float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
-
-        if (distanceToTarget < throwDistance)
+        if (Time.frameCount % frameInterval == 0)
         {
-            justThown = true;
-            GameObject tempSnowBall = Instantiate(snowBall, transform.position, transform.rotation);
-            Rigidbody tempRb = tempSnowBall.GetComponent<Rigidbody>();
-            Vector3 targetDirection = Vector3.Normalize(target.transform.position - transform.position);
+            float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
+            if (distanceToTarget < throwDistance && justThown == false)
+            {
+                ThrowSnowball();
+            }
 
-            //Add a small throw angle
-            targetDirection += new Vector3(0, 0.33f, 0);
-            tempRb.AddForce(targetDirection * throwSpeed);
-            StartCoroutine(ThrowOver());
+            // Vector3 offset = target.transform.position - transform.position;
+            // float sqrLen = offset.sqrMagnitude;
+            // if (sqrLen < throwDistance)
+            // {
+            //     ThrowSnowball();
+            // }
         }
 
     }
 
-    IEnumerator ThrowOver()
+    private void ThrowSnowball()
     {
-        yield return new WaitForSeconds(0.1f);
+        justThown = true;
+        GameObject snowball = Instantiate(snowBall, transform.position, transform.rotation);
+        Rigidbody rb = snowball.GetComponent<Rigidbody>();
+        Vector3 targetDirection = Vector3.Normalize(target.transform.position - transform.position);
+        targetDirection += throwY;
+        rb.AddForce(targetDirection * throwSpeed);
+        StartCoroutine(ThrowCooldown());
+    }
+
+    IEnumerator ThrowCooldown()
+    {
+        yield return new WaitForSeconds(1f);
         justThown = false;
     }
 }
