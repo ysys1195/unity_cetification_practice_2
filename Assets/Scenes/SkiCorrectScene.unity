@@ -1642,6 +1642,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 192056411}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &489563748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6839049136768571712, guid: 49ee210ac0510844d8da858708681a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 116157318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &503359359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4133,6 +4145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231ee5b6f5b094d698641277fa3f6452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 489563748}
 --- !u!114 &1480821829
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class RaceTimerAlternative : MonoBehaviour
 {
   public static RaceTimerAlternative Instance { get; private set; }
   public float raceTime { get; private set; }
+  public TextMeshProUGUI timerText;
   private bool isRacing = false;
 
   private void Awake()
@@ -22,6 +24,7 @@ public class RaceTimerAlternative : MonoBehaviour
     if (isRacing == true)
     {
       raceTime += Time.deltaTime; // タイマーを更新
+      timerText.text = raceTime.ToString("F2"); // タイマーの表示を更新
     }
   }
 
@@ -30,6 +33,7 @@ public class RaceTimerAlternative : MonoBehaviour
     isRacing = true;
     raceTime = 0f; // タイマーをリセット
     Debug.Log("レースがスタートしました。タイマーをリセットしました。");
+    GameEventAlternative.RaceStart();
   }
 
   public void StopRace()
