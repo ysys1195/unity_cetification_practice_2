@@ -10,6 +10,9 @@ public class MainMenuController : MonoBehaviour
 
     [SerializeField] private CanvasGroup buttonsPanel;
     [SerializeField] private Button playButton;
+    [SerializeField] private Button helpButton;
+    [SerializeField] private CanvasGroup helpPanel;
+    [SerializeField] private Button helpBackButton;
     [SerializeField] private Button quitButton;
     [SerializeField] private CanvasGroup confirmQuitPanel;
     [SerializeField] private Button confirmYesButton;
@@ -29,6 +32,8 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         playButton.onClick.AddListener(() => StartCoroutine(StartGame()));
+        helpButton.onClick.AddListener(OpenHelpPanel);
+        helpBackButton.onClick.AddListener(HelpToTitle);
         quitButton.onClick.AddListener(ConfirmQuit);
         confirmYesButton.onClick.AddListener(() => StartCoroutine(QuitGame()));
         confirmNoButton.onClick.AddListener(rejectQuitGame);
@@ -42,6 +47,26 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(LoadSceneID);
     }
 
+    private void OpenHelpPanel()
+    {
+        helpPanel.DOFade(1, fadeDuration);
+        helpPanel.interactable = true;
+        helpPanel.blocksRaycasts = true;
+        // ボタン群を非表示
+        buttonsPanel.DOFade(0, fadeDuration);
+        buttonsPanel.interactable = false;
+    }
+
+    private void HelpToTitle()
+    {
+        helpPanel.DOFade(0, fadeDuration);
+        helpPanel.interactable = false;
+        helpPanel.blocksRaycasts = false;
+        // ボタン群を再表示
+        buttonsPanel.DOFade(1, fadeDuration);
+        buttonsPanel.interactable = true;
+    }
+
     private void ConfirmQuit()
     {
         // ボタン群を非表示
@@ -50,6 +75,7 @@ public class MainMenuController : MonoBehaviour
         // 確認パネルのalphaを表示
         confirmQuitPanel.DOFade(1, fadeDuration);
         confirmQuitPanel.interactable = true;
+        confirmQuitPanel.blocksRaycasts = true;
     }
 
     private IEnumerator QuitGame()
@@ -71,6 +97,7 @@ public class MainMenuController : MonoBehaviour
         // 確認パネルを非表示
         confirmQuitPanel.DOFade(0, fadeDuration);
         confirmQuitPanel.interactable = false;
+        confirmQuitPanel.blocksRaycasts = false;
         // ボタン群を再表示
         buttonsPanel.DOFade(1, fadeDuration);
         buttonsPanel.interactable = true;
