@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LeaderboardAlternative : MonoBehaviour
 {
+  public TextMeshProUGUI[] TimerText;
   public string[] formattedTimes;
   private static int saveNumber = 5; // ベストタイムの数
   private List<float> savedTimes = new List<float>(new float[saveNumber]);
@@ -46,6 +48,7 @@ public class LeaderboardAlternative : MonoBehaviour
     {
       TimeSpan t = TimeSpan.FromSeconds(savedTimes[i]);
       formattedTimes[i] = t.ToString("m':'ss':'ff");
+      TimerText[i].text = t.ToString("m':'ss':'ff");
     }
   }
 
